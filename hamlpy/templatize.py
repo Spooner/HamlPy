@@ -28,4 +28,7 @@ def decorate_templatize(func):
     return templatize
 
 if _django_available:
-    trans_real.templatize = decorate_templatize(trans_real.templatize)
+    try:
+        trans_real.templatize = decorate_templatize(trans_real.templatize)
+    except AttributeError:
+        pass
